@@ -13,9 +13,9 @@
     "send": "Send",
     "loading": "Loading...",
     "error": "Error",
-    "disclaimer": "Estimated prices for 2026 season",
+    "disclaimer": "We only show calculations for resorts that have published official 2026 pricing.",
     "perPerson": "per person",
-    "total": "Estimated total",
+    "total": "Trip total",
     "modifyParams": "Modify parameters",
     "sendByEmail": "Send summary by email",
     "viewProfile": "View full profile",
@@ -28,14 +28,21 @@
     "about": "About"
   },
   "home": {
-    "title": "How much does it cost to ski in Argentina?",
-    "subtitle": "Compare costs across Argentine ski resorts. Lift passes, gear, lessons, transport — all in one place.",
-    "cta": "Start calculating",
-    "browseResorts": "Browse ski resorts"
+    "title": "How much does it cost to ski in Argentina in 2026?",
+    "subtitle": "A simple tool to estimate your 2026 ski trip. Full calculation is currently enabled for Cerro Castor.",
+    "cta": "Calculate Cerro Castor",
+    "browseResorts": "View resort status",
+    "focusBadge": "2026 experiment: real-data first",
+    "card1Title": "Official data first",
+    "card1Body": "No invented prices: we only calculate where official 2026 rates are already published.",
+    "card2Title": "Cerro Castor enabled",
+    "card2Body": "Estimate lift pass, gear, lessons, transport, and lodging for Castor.",
+    "card3Title": "More resorts coming",
+    "card3Body": "We will enable each resort once it publishes official 2026 information."
   },
   "resorts": {
     "title": "Ski Resorts",
-    "subtitle": "Argentina's 7 major ski resorts",
+    "subtitle": "Status of each resort for the 2026 season",
     "altitude": "Summit elevation",
     "verticalDrop": "Vertical drop",
     "trails": "Trails",
@@ -72,13 +79,15 @@
     "byCar": "By car",
     "searchFlights": "Search flights",
     "googleFlights": "Google Flights",
-    "unreliable": "Irregular frequency"
+    "unreliable": "Irregular frequency",
+    "availableNow": "Available",
+    "comingSoonShort": "Coming soon"
   },
   "calculator": {
-    "title": "Cost Calculator",
+    "title": "2026 Calculator",
     "myTrips": "My trips",
     "noTripsYet": "No trips yet",
-    "noTripsHint": "Build your first trip to estimate how much skiing would cost",
+    "noTripsHint": "Build your trip using resorts with published official 2026 information.",
     "addTrip": "Build a trip",
     "addAnother": "Add another option",
     "compareTrips": "Compare",
@@ -87,7 +96,7 @@
     "tripSummary": "{{days}} days · {{people}} people · {{period}}",
     "sameResortBadge": "Same resort, different dates",
     "step1Title": "Choose resort & dates",
-    "step1Subtitle": "Select a resort and set your travel dates",
+    "step1Subtitle": "For now, you can only calculate for resorts with published official 2026 rates.",
     "step2Title": "Gear, lessons & transport",
     "step2Subtitle": "Configure what you need for this trip",
     "step3Title": "Result",
@@ -140,9 +149,9 @@
     "selected": "{{count}} resort selected",
     "selected_plural": "{{count}} resorts selected",
     "maxResorts": "Maximum 3 resorts",
-    "pricesConfirmed": "Official 2026 prices",
-    "pricesEstimated": "Estimated prices — 2026 rates to be announced",
-    "pricesEstimatedShort": "Estimated"
+    "pricesConfirmed": "Official 2026 information",
+    "pricesEstimated": "Coming soon — waiting for official 2026 publication",
+    "pricesEstimatedShort": "Coming soon"
   },
   "email": {
     "title": "Get your summary by email",
@@ -152,7 +161,7 @@
     "success": "Done! Check your inbox."
   },
   "footer": {
-    "disclaimer": "Estimated prices. Check official sources before purchasing.",
+    "disclaimer": "We only calculate for resorts with official 2026 data.",
     "madeWith": "Made with",
     "forSkiers": "for skiers"
   }

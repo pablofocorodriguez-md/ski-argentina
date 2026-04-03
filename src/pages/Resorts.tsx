@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import { resorts } from '../lib/resorts-data'
+import { resorts, getResortAvailabilityMessage, isResortCalculable } from '../lib/resorts-data'
 import { getAppLanguage } from '../i18n/lang'
 
 export default function Resorts() {
@@ -18,6 +18,7 @@ export default function Resorts() {
         {resorts.map((resort) => {
           const city = lang === 'en' ? resort.city_en : resort.city_es
           const province = lang === 'en' ? resort.province_en : resort.province_es
+          const calculable = isResortCalculable(resort.id)
 
           return (
             <Link
@@ -25,15 +26,25 @@ export default function Resorts() {
               to={`/${lang}/resorts/${resort.slug}`}
               className="group block bg-white rounded-2xl border border-mountain-100 overflow-hidden hover:shadow-lg hover:border-snow-300 transition-all no-underline"
             >
-              {/* Photo placeholder */}
               <div className="h-48 bg-gradient-to-br from-snow-200 to-mountain-200 flex items-center justify-center">
                 <span className="text-6xl">🏔️</span>
               </div>
 
               <div className="p-5">
-                <h2 className="text-xl font-display font-bold text-mountain-900 group-hover:text-snow-700 transition-colors">
-                  {resort.name}
-                </h2>
+                <div className="flex items-center justify-between gap-2">
+                  <h2 className="text-xl font-display font-bold text-mountain-900 group-hover:text-snow-700 transition-colors">
+                    {resort.name}
+                  </h2>
+                  {calculable ? (
+                    <span className="text-[11px] font-semibold text-green-700 bg-green-100 px-2 py-0.5 rounded-full">
+                      {t('resorts.availableNow')}
+                    </span>
+                  ) : (
+                    <span className="text-[11px] font-semibold text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full">
+                      {t('resorts.comingSoonShort')}
+                    </span>
+                  )}
+                </div>
                 <p className="text-sm text-mountain-500 mt-1">
                   {city}, {province}
                 </p>
@@ -51,16 +62,12 @@ export default function Resorts() {
                     <span className="text-base">🚡</span>
                     <span>{resort.total_lifts} {t('resorts.lifts').toLowerCase()}</span>
                   </div>
-                  {resort.skiable_area_ha && (
-                    <div className="flex items-center gap-1.5 text-mountain-600">
-                      <span className="text-base">📐</span>
-                      <span>{resort.skiable_area_ha} ha</span>
-                    </div>
-                  )}
                 </div>
 
                 <p className="mt-3 text-sm text-mountain-500 line-clamp-2">
-                  {lang === 'en' ? resort.profile_en : resort.profile_es}
+                  {calculable
+                    ? (lang === 'en' ? resort.profile_en : resort.profile_es)
+                    : getResortAvailabilityMessage(resort.id, lang)}
                 </p>
               </div>
             </Link>

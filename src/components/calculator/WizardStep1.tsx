@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { useAppContext } from '../../context/AppContext'
-import { resorts } from '../../lib/resorts-data'
-import { arePricesConfirmed, buildPassengers, type Trip } from '../../lib/pricing-data'
+import { getResortAvailabilityMessage, isResortCalculable, resorts } from '../../lib/resorts-data'
+import { buildPassengers, type Trip } from '../../lib/pricing-data'
 import { detectPeriodFromRange, calculateSkiDays, getPeriodLabel } from '../../lib/season'
 import { getAppLanguage } from '../../i18n/lang'
 
@@ -54,20 +54,22 @@ export default function WizardStep1({ trip, onChange, onNext, onCancel }: Props)
       </h2>
       <p className="text-mountain-500 mb-6">{t('calculator.step1Subtitle')}</p>
 
-      {/* Resort selection grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 mb-8">
         {resorts.map((resort) => {
           const isSelected = trip.resortId === resort.id
           const city = lang === 'en' ? resort.city_en : resort.city_es
-          const confirmed = arePricesConfirmed(resort.id)
+          const calculable = isResortCalculable(resort.id)
           return (
             <button
               key={resort.id}
-              onClick={() => update({ resortId: resort.id })}
-              className={`text-left p-4 rounded-xl border-2 transition-all cursor-pointer ${
+              onClick={() => calculable && update({ resortId: resort.id })}
+              disabled={!calculable}
+              className={`text-left p-4 rounded-xl border-2 transition-all ${
                 isSelected
-                  ? 'border-snow-600 bg-snow-50 shadow-md'
-                  : 'border-dashed border-mountain-200 hover:border-snow-300 hover:bg-snow-50/50'
+                  ? 'border-snow-600 bg-snow-50 shadow-md cursor-pointer'
+                  : calculable
+                    ? 'border-dashed border-mountain-200 hover:border-snow-300 hover:bg-snow-50/50 cursor-pointer'
+                    : 'border-dashed border-amber-200 bg-amber-50/60 cursor-not-allowed opacity-90'
               }`}
             >
               <div className="flex items-start justify-between">
@@ -75,24 +77,30 @@ export default function WizardStep1({ trip, onChange, onNext, onCancel }: Props)
                   <h3 className="font-semibold text-mountain-900">{resort.name}</h3>
                   <p className="text-sm text-mountain-500 mt-0.5">{city}</p>
                 </div>
-                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 mt-0.5 ${
-                  isSelected ? 'border-snow-600 bg-snow-600 text-white' : 'border-mountain-300'
-                }`}>
-                  {isSelected && (
-                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                  )}
-                </div>
+                {calculable ? (
+                  <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 mt-0.5 ${
+                    isSelected ? 'border-snow-600 bg-snow-600 text-white' : 'border-mountain-300'
+                  }`}>
+                    {isSelected && (
+                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    )}
+                  </div>
+                ) : (
+                  <span className="text-[10px] font-semibold text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full">
+                    {t('resorts.comingSoonShort')}
+                  </span>
+                )}
               </div>
               <div className="flex gap-3 mt-2 text-xs text-mountain-500">
                 <span>⛰️ {resort.summit_elevation}m</span>
                 <span>🎿 {resort.total_trails}</span>
                 <span>🚡 {resort.total_lifts}</span>
               </div>
-              {!confirmed && (
-                <div className="mt-1.5 text-[10px] text-amber-600 font-medium">
-                  {t('calculator.pricesEstimatedShort')}
+              {!calculable && (
+                <div className="mt-2 text-[11px] text-amber-700 font-medium">
+                  {getResortAvailabilityMessage(resort.id, lang)}
                 </div>
               )}
             </button>
@@ -100,9 +108,7 @@ export default function WizardStep1({ trip, onChange, onNext, onCancel }: Props)
         })}
       </div>
 
-      {/* Trip params */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Left: dates + people */}
         <div className="space-y-5">
           <Field label={t('calculator.dates')}>
             <div className="grid grid-cols-2 gap-3">
@@ -143,7 +149,6 @@ export default function WizardStep1({ trip, onChange, onNext, onCancel }: Props)
             )}
           </Field>
 
-          {/* Manual fallback: ski days + period */}
           {(!trip.startDate || !trip.endDate) && (
             <Field label={t('calculator.skiDays')}>
               <div className="flex items-center gap-3">
@@ -173,7 +178,6 @@ export default function WizardStep1({ trip, onChange, onNext, onCancel }: Props)
             </Field>
           )}
 
-          {/* People */}
           <div className="grid grid-cols-2 gap-4">
             <Field label={t('calculator.adults')}>
               <NumberStepper value={trip.adults} min={1} max={6} onChange={(v) => update({ adults: v, passengers: buildPassengers(v, trip.children, lang) })} />
@@ -184,7 +188,6 @@ export default function WizardStep1({ trip, onChange, onNext, onCancel }: Props)
           </div>
         </div>
 
-        {/* Right: accommodation */}
         <div className="space-y-5">
           <Field label={t('calculator.accommodation')}>
             <label className="text-sm text-mountain-500">{t('calculator.accommodationPrice')}</label>
@@ -202,7 +205,6 @@ export default function WizardStep1({ trip, onChange, onNext, onCancel }: Props)
         </div>
       </div>
 
-      {/* Navigation */}
       <div className="mt-8 flex justify-between">
         <button
           onClick={onCancel}
