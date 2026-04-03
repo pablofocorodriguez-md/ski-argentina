@@ -11,6 +11,30 @@ import caviahueData from '../../data/resorts/caviahue.json'
 
 const allData = [catedralData, lenasData, chapelcoData, castorData, bayoData, hoyaData, caviahueData]
 
+export interface ResortCalculatorAvailability {
+  enabled: boolean
+  status: string
+  message_es: string
+  message_en: string
+  message_pt: string
+}
+
+export const resortCalculatorAvailability: Record<string, ResortCalculatorAvailability> = Object.fromEntries(
+  allData.map(d => [d.id, d.calculator2026])
+)
+
+export function isResortCalculable(resortId: string): boolean {
+  return resortCalculatorAvailability[resortId]?.enabled ?? false
+}
+
+export function getResortAvailabilityMessage(resortId: string, lang: 'es' | 'en' | 'pt'): string {
+  const data = resortCalculatorAvailability[resortId]
+  if (!data) return ''
+  if (lang === 'en') return data.message_en
+  if (lang === 'pt') return data.message_pt
+  return data.message_es
+}
+
 // Transform JSON data into Resort objects
 export const resorts: Resort[] = allData.map(d => ({
   id: d.id,

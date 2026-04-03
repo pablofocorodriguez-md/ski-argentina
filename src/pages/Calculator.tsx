@@ -9,7 +9,7 @@ import TripResult from '../components/calculator/TripResult'
 import TripCard from '../components/calculator/TripCard'
 import TripComparison from '../components/calculator/TripComparison'
 import { calculateTripCost, createEmptyTrip, type Trip, type TripWithResult } from '../lib/pricing-data'
-import { resorts } from '../lib/resorts-data'
+import { getResortAvailabilityMessage, isResortCalculable, resorts } from '../lib/resorts-data'
 import { getAppLanguage } from '../i18n/lang'
 
 type View = 'list' | 'wizard' | 'compare'
@@ -21,12 +21,13 @@ export default function Calculator() {
   const lang = getAppLanguage(i18n.language)
   const resortSlug = searchParams.get('resort')
   const preselectedResort = resortSlug ? resorts.find(r => r.slug === resortSlug) : undefined
+  const preselectedIsCalculable = preselectedResort ? isResortCalculable(preselectedResort.id) : false
 
-  const [view, setView] = useState<View>(preselectedResort ? 'wizard' : 'list')
+  const [view, setView] = useState<View>(preselectedIsCalculable ? 'wizard' : 'list')
   const [trips, setTrips] = useState<TripWithResult[]>([])
   const [currentTrip, setCurrentTrip] = useState<Trip>(() => {
     const trip = createEmptyTrip(currency, lang)
-    if (preselectedResort) trip.resortId = preselectedResort.id
+    if (preselectedResort && preselectedIsCalculable) trip.resortId = preselectedResort.id
     return trip
   })
   const [wizardStep, setWizardStep] = useState(1)
@@ -82,7 +83,6 @@ export default function Calculator() {
     setView('list')
   }
 
-  // Comparison: modify a trip from comparison view
   function handleCompareModify(index: number) {
     editTrip(index)
   }
@@ -99,11 +99,16 @@ export default function Calculator() {
         {t('calculator.title')}
       </h1>
 
-      {/* ───── LIST VIEW ───── */}
+      {preselectedResort && !preselectedIsCalculable && (
+        <div className="mt-4 mb-6 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+          <p className="font-semibold">{t('resorts.comingSoonShort')}: {preselectedResort.name}</p>
+          <p className="mt-1">{getResortAvailabilityMessage(preselectedResort.id, lang)}</p>
+        </div>
+      )}
+
       {view === 'list' && (
         <div className="mt-6">
           {trips.length === 0 ? (
-            /* Empty state */
             <div className="text-center py-16">
               <div className="text-6xl mb-4 opacity-40">🎿</div>
               <h2 className="text-xl font-display font-bold text-mountain-700 mb-2">
@@ -119,7 +124,6 @@ export default function Calculator() {
             </div>
           ) : (
             <>
-              {/* Trip cards */}
               <div className={`grid gap-4 ${
                 trips.length === 1 ? 'grid-cols-1 max-w-lg mx-auto'
                   : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
@@ -134,7 +138,6 @@ export default function Calculator() {
                 ))}
               </div>
 
-              {/* Actions */}
               <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
                 {trips.length < 3 && (
                   <button
@@ -158,7 +161,6 @@ export default function Calculator() {
         </div>
       )}
 
-      {/* ───── WIZARD VIEW ───── */}
       {view === 'wizard' && (
         <>
           <StepIndicator current={wizardStep} />
@@ -194,7 +196,6 @@ export default function Calculator() {
         </>
       )}
 
-      {/* ───── COMPARE VIEW ───── */}
       {view === 'compare' && (
         <TripComparison
           trips={trips}

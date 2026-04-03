@@ -5,7 +5,6 @@
   "source": "cerrocastor.com",
   "lastUpdated": "2026-04-03",
   "verified": true,
-
   "location": {
     "city_es": "Ushuaia",
     "city_en": "Ushuaia",
@@ -15,7 +14,6 @@
     "latitude": -54.7503,
     "longitude": -68.3172
   },
-
   "mountain": {
     "baseElevation": 195,
     "summitElevation": 1057,
@@ -31,7 +29,6 @@
     "liftsDetail_es": "6 telesillas cuádruples, 4 magic carpets, 4 teleskis",
     "liftsDetail_en": "6 quad chairlifts, 4 magic carpets, 4 T-bars"
   },
-
   "season": {
     "start_es": "Finales de junio",
     "start_en": "Late June",
@@ -39,14 +36,12 @@
     "end_en": "Mid-October",
     "avgAnnualSnowfallCm": 450
   },
-
   "profile": {
     "profile_es": "El centro de esquí más austral del mundo con la temporada más larga de Argentina.",
     "profile_en": "The southernmost ski resort in the world with the longest season in Argentina.",
     "description_es": "Cerro Castor, a solo 26 km de Ushuaia, ofrece la temporada más larga del país gracias a su ubicación austral y bajas temperaturas. Sus pistas están bien distribuidas para todos los niveles y la calidad de nieve es consistente durante toda la temporada.",
     "description_en": "Cerro Castor, just 26 km from Ushuaia, offers the longest season in the country thanks to its southern location and low temperatures. Its trails are well distributed across all levels and snow quality is consistent throughout the season."
   },
-
   "links": {
     "website": "https://www.cerrocastor.com/",
     "trailMap": "https://www.cerrocastor.com/mapa-de-pistas",
@@ -55,37 +50,72 @@
     "instagram": "https://www.instagram.com/cerrocastor/",
     "facebook": "https://www.facebook.com/cerrocastor/"
   },
-
   "pricing2026": {
     "confirmed": true,
     "currency": "ARS",
     "liftPassPerDay": {
-      "adult": { "low": 99800, "mid": 140500, "high": 140500 },
-      "child": { "low": 69800, "mid": 98300, "high": 98300 }
+      "adult": {
+        "low": 99800,
+        "mid": 140500,
+        "high": 140500
+      },
+      "child": {
+        "low": 69800,
+        "mid": 98300,
+        "high": 98300
+      }
     },
     "equipment": {
       "city": {
         "label_es": "Rental en ciudad (Ushuaia)",
         "label_en": "City rental (Ushuaia)",
         "source": "cerrocastor.com - Rental Ciudad",
-        "perDay": { "basic": 44800, "intermediate": 54700, "advanced": 68100 }
+        "perDay": {
+          "basic": 44800,
+          "intermediate": 54700,
+          "advanced": 68100
+        }
       },
       "mountain": {
         "label_es": "Rental en base/montaña (oficial Cerro Castor)",
         "label_en": "On-mountain rental (official Cerro Castor)",
         "source": "cerrocastor.com - Rental Morada y Base",
-        "perDay": { "basic": 56000, "intermediate": 68400, "advanced": 85200 }
+        "perDay": {
+          "basic": 56000,
+          "intermediate": 68400,
+          "advanced": 85200
+        }
       }
     },
-    "lessonsPerClass": { "group": 30000, "private": 70000 },
+    "lessonsPerClass": {
+      "group": 30000,
+      "private": 70000
+    },
     "notes": "Pases y equipo verificados cerrocastor.com abril 2026. Promocional=low, Regular=mid/high. Precios rental oficiales del centro. Clases pendientes."
   },
-
   "access": {
     "airlines": [
-      { "name": "Aerolíneas Argentinas", "destination": "USH", "reliable": true, "notes_es": "Vuelos diarios todo el año", "notes_en": "Daily flights year-round" },
-      { "name": "Flybondi", "destination": "USH", "reliable": true, "notes_es": "Low cost. Verificar equipaje de esquí.", "notes_en": "Low cost. Check ski luggage policy." },
-      { "name": "JetSmart", "destination": "USH", "reliable": true, "notes_es": "Ultra low cost. Equipaje de esquí con cargo adicional.", "notes_en": "Ultra low cost. Ski luggage has extra charge." }
+      {
+        "name": "Aerolíneas Argentinas",
+        "destination": "USH",
+        "reliable": true,
+        "notes_es": "Vuelos diarios todo el año",
+        "notes_en": "Daily flights year-round"
+      },
+      {
+        "name": "Flybondi",
+        "destination": "USH",
+        "reliable": true,
+        "notes_es": "Low cost. Verificar equipaje de esquí.",
+        "notes_en": "Low cost. Check ski luggage policy."
+      },
+      {
+        "name": "JetSmart",
+        "destination": "USH",
+        "reliable": true,
+        "notes_es": "Ultra low cost. Equipaje de esquí con cargo adicional.",
+        "notes_en": "Ultra low cost. Ski luggage has extra charge."
+      }
     ],
     "driving": {
       "originName": "Buenos Aires",
@@ -94,5 +124,12 @@
       "tollEstimateArs": 55000,
       "tollEstimateUsd": 45.83
     }
+  },
+  "calculator2026": {
+    "enabled": true,
+    "status": "available",
+    "message_es": "Disponible para calcular con tarifas oficiales 2026",
+    "message_en": "Available for calculation with official 2026 pricing",
+    "message_pt": "Disponível para cálculo com tarifas oficiais de 2026"
   }
 }

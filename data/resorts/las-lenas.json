@@ -5,7 +5,6 @@
   "source": "laslenas.com",
   "lastUpdated": "2026-04-03",
   "verified": false,
-
   "location": {
     "city_es": "Malargüe",
     "city_en": "Malargüe",
@@ -15,7 +14,6 @@
     "latitude": -35.1636,
     "longitude": -70.0708
   },
-
   "mountain": {
     "baseElevation": 2240,
     "summitElevation": 3430,
@@ -28,7 +26,6 @@
     "totalLifts": 14,
     "skiableAreaHa": 450
   },
-
   "season": {
     "start_es": "Mediados de junio",
     "start_en": "Mid-June",
@@ -36,14 +33,12 @@
     "end_en": "Early October",
     "avgAnnualSnowfallCm": 350
   },
-
   "profile": {
     "profile_es": "Terreno extremo y nieve polvo de clase mundial para esquiadores avanzados.",
     "profile_en": "Extreme terrain and world-class powder snow for advanced skiers.",
     "description_es": "Las Leñas es famoso por su terreno fuera de pista y nieve polvo de excelente calidad. Con el desnivel esquiable más grande de Argentina y pistas empinadas de nivel avanzado, atrae a esquiadores expertos de todo el mundo. El resort ofrece alojamiento ski-in/ski-out.",
     "description_en": "Las Leñas is famous for its off-piste terrain and excellent powder snow quality. With the highest vertical drop in Argentina and steep advanced runs, it attracts expert skiers from around the world. The resort offers ski-in/ski-out accommodation."
   },
-
   "links": {
     "website": "https://laslenas.com/",
     "trailMap": "https://laslenas.com/mapa-de-pistas",
@@ -52,24 +47,55 @@
     "instagram": "https://www.instagram.com/laslenasresort/",
     "facebook": "https://www.facebook.com/laslenasresort/"
   },
-
   "pricing2026": {
-    "confirmed": true,
+    "confirmed": false,
     "currency": "ARS",
     "liftPassPerDay": {
-      "adult": { "low": 52000, "mid": 65000, "high": 82000 },
-      "child": { "low": 26000, "mid": 32500, "high": 41000 }
+      "adult": {
+        "low": 52000,
+        "mid": 65000,
+        "high": 82000
+      },
+      "child": {
+        "low": 26000,
+        "mid": 32500,
+        "high": 41000
+      }
     },
-    "equipmentPerDay": { "basic": 24000, "intermediate": 34000, "advanced": 48000 },
-    "lessonsPerClass": { "group": 38000, "private": 90000 },
+    "equipmentPerDay": {
+      "basic": 24000,
+      "intermediate": 34000,
+      "advanced": 48000
+    },
+    "lessonsPerClass": {
+      "group": 38000,
+      "private": 90000
+    },
     "notes": "Precios a verificar contra tarifario oficial 2026"
   },
-
   "access": {
     "airlines": [
-      { "name": "Aerolíneas Argentinas", "destination": "AFA", "reliable": true, "notes_es": "Vuelos a San Rafael; luego 200 km por ruta hasta Las Leñas.", "notes_en": "Flights to San Rafael; then 200 km drive to Las Leñas." },
-      { "name": "JetSmart", "destination": "MDZ", "reliable": true, "notes_es": "Volar a Mendoza y manejar ~450 km hasta Las Leñas.", "notes_en": "Fly to Mendoza and drive ~450 km to Las Leñas." },
-      { "name": "LADE", "destination": "LGS", "reliable": false, "notes_es": "Servicio militar con frecuencia irregular. Verificar disponibilidad antes de planificar.", "notes_en": "Military airline with irregular frequency. Verify availability before planning." }
+      {
+        "name": "Aerolíneas Argentinas",
+        "destination": "AFA",
+        "reliable": true,
+        "notes_es": "Vuelos a San Rafael; luego 200 km por ruta hasta Las Leñas.",
+        "notes_en": "Flights to San Rafael; then 200 km drive to Las Leñas."
+      },
+      {
+        "name": "JetSmart",
+        "destination": "MDZ",
+        "reliable": true,
+        "notes_es": "Volar a Mendoza y manejar ~450 km hasta Las Leñas.",
+        "notes_en": "Fly to Mendoza and drive ~450 km to Las Leñas."
+      },
+      {
+        "name": "LADE",
+        "destination": "LGS",
+        "reliable": false,
+        "notes_es": "Servicio militar con frecuencia irregular. Verificar disponibilidad antes de planificar.",
+        "notes_en": "Military airline with irregular frequency. Verify availability before planning."
+      }
     ],
     "driving": {
       "originName": "Buenos Aires",
@@ -78,5 +104,12 @@
       "tollEstimateArs": 35000,
       "tollEstimateUsd": 29.17
     }
+  },
+  "calculator2026": {
+    "enabled": false,
+    "status": "coming_soon",
+    "message_es": "Próximamente: habilitaremos este centro cuando publique información oficial 2026",
+    "message_en": "Coming soon: we will enable this resort when official 2026 pricing is published",
+    "message_pt": "Em breve: vamos habilitar esta estação quando publicar informações oficiais de 2026"
   }
 }

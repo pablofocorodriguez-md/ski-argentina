@@ -1,7 +1,13 @@
 import { useParams, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAppContext } from '../context/AppContext'
-import { getResortBySlug, getAirlineRoutesForResort, getDrivingRouteForResort } from '../lib/resorts-data'
+import {
+  getResortBySlug,
+  getAirlineRoutesForResort,
+  getDrivingRouteForResort,
+  getResortAvailabilityMessage,
+  isResortCalculable,
+} from '../lib/resorts-data'
 import { getAppLanguage } from '../i18n/lang'
 
 export default function ResortDetail() {
@@ -32,6 +38,9 @@ export default function ResortDetail() {
   const description = lang === 'en' ? resort.description_en : resort.description_es
   const seasonStart = lang === 'en' ? resort.season_start_en : resort.season_start_es
   const seasonEnd = lang === 'en' ? resort.season_end_en : resort.season_end_es
+
+  const calculable = isResortCalculable(resort.id)
+  const availabilityMessage = getResortAvailabilityMessage(resort.id, lang)
 
   const trailTotal = resort.beginner_trails + resort.intermediate_trails + resort.advanced_trails + resort.expert_trails
   const beginnerPct = Math.round((resort.beginner_trails / trailTotal) * 100)
@@ -240,12 +249,19 @@ export default function ResortDetail() {
             </section>
 
             {/* CTA */}
-            <Link
-              to={`/${lang}/calculator?resort=${resort.slug}`}
-              className="block w-full text-center px-6 py-3 bg-snow-700 text-white rounded-xl font-semibold hover:bg-snow-800 transition-colors no-underline"
-            >
-              {t('resorts.calculateTripTo', { resort: resort.name })}
-            </Link>
+            {calculable ? (
+              <Link
+                to={`/${lang}/calculator?resort=${resort.slug}`}
+                className="block w-full text-center px-6 py-3 bg-snow-700 text-white rounded-xl font-semibold hover:bg-snow-800 transition-colors no-underline"
+              >
+                {t('resorts.calculateTripTo', { resort: resort.name })}
+              </Link>
+            ) : (
+              <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+                <p className="font-semibold">{t('resorts.comingSoonShort')}</p>
+                <p className="mt-1">{availabilityMessage}</p>
+              </div>
+            )}
           </div>
         </div>
       </div>

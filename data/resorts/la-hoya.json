@@ -5,7 +5,6 @@
   "source": "skilahoya.com.ar",
   "lastUpdated": "2026-04-03",
   "verified": false,
-
   "location": {
     "city_es": "Esquel",
     "city_en": "Esquel",
@@ -15,7 +14,6 @@
     "latitude": -42.8167,
     "longitude": -71.2500
   },
-
   "mountain": {
     "baseElevation": 1350,
     "summitElevation": 2075,
@@ -28,7 +26,6 @@
     "totalLifts": 9,
     "skiableAreaHa": 60
   },
-
   "season": {
     "start_es": "Mediados de junio",
     "start_en": "Mid-June",
@@ -36,14 +33,12 @@
     "end_en": "Late September",
     "avgAnnualSnowfallCm": 300
   },
-
   "profile": {
     "profile_es": "Centro accesible con excelente nieve polvo y ambiente familiar sin pretensiones.",
     "profile_en": "Affordable resort with excellent powder snow and an unpretentious family atmosphere.",
     "description_es": "La Hoya es conocido por su excelente calidad de nieve polvo gracias a la orientación de sus laderas. Es uno de los centros más accesibles económicamente de Argentina y ofrece un ambiente relajado y familiar. Esquel, con su encanto patagónico, está a solo 13 km.",
     "description_en": "La Hoya is known for its excellent powder snow quality thanks to the orientation of its slopes. It is one of the most affordable ski resorts in Argentina and offers a relaxed, family atmosphere. Esquel, with its Patagonian charm, is just 13 km away."
   },
-
   "links": {
     "website": "https://www.skilahoya.com.ar/",
     "trailMap": null,
@@ -52,19 +47,32 @@
     "instagram": "https://www.instagram.com/camlahoya/",
     "facebook": "https://www.facebook.com/skilahoya/"
   },
-
   "pricing2026": {
     "confirmed": false,
     "currency": "ARS",
     "liftPassPerDay": {
-      "adult": { "low": 24000, "mid": 32000, "high": 40000 },
-      "child": { "low": 12000, "mid": 16000, "high": 20000 }
+      "adult": {
+        "low": 24000,
+        "mid": 32000,
+        "high": 40000
+      },
+      "child": {
+        "low": 12000,
+        "mid": 16000,
+        "high": 20000
+      }
     },
-    "equipmentPerDay": { "basic": 14000, "intermediate": 20000, "advanced": 28000 },
-    "lessonsPerClass": { "group": 20000, "private": 45000 },
+    "equipmentPerDay": {
+      "basic": 14000,
+      "intermediate": 20000,
+      "advanced": 28000
+    },
+    "lessonsPerClass": {
+      "group": 20000,
+      "private": 45000
+    },
     "notes": "Estimación. La Hoya suele publicar tarifas más tarde."
   },
-
   "access": {
     "airlines": [],
     "driving": {
@@ -74,5 +82,12 @@
       "tollEstimateArs": 48000,
       "tollEstimateUsd": 40.00
     }
+  },
+  "calculator2026": {
+    "enabled": false,
+    "status": "coming_soon",
+    "message_es": "Próximamente: habilitaremos este centro cuando publique información oficial 2026",
+    "message_en": "Coming soon: we will enable this resort when official 2026 pricing is published",
+    "message_pt": "Em breve: vamos habilitar esta estação quando publicar informações oficiais de 2026"
   }
 }
