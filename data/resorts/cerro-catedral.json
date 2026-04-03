@@ -1,0 +1,82 @@
+{
+  "id": "1",
+  "slug": "cerro-catedral",
+  "name": "Cerro Catedral",
+  "source": "catedralaltapatagonia.com",
+  "lastUpdated": "2026-04-03",
+  "verified": false,
+
+  "location": {
+    "city_es": "San Carlos de Bariloche",
+    "city_en": "San Carlos de Bariloche",
+    "province_es": "Río Negro",
+    "province_en": "Río Negro",
+    "airportCode": "BRC",
+    "latitude": -41.1647,
+    "longitude": -71.4411
+  },
+
+  "mountain": {
+    "baseElevation": 1030,
+    "summitElevation": 2100,
+    "verticalDrop": 1070,
+    "totalTrails": 120,
+    "beginnerTrails": 30,
+    "intermediateTrails": 50,
+    "advancedTrails": 25,
+    "expertTrails": 15,
+    "totalLifts": 39,
+    "skiableAreaHa": 600
+  },
+
+  "season": {
+    "start_es": "Mediados de junio",
+    "start_en": "Mid-June",
+    "end_es": "Principios de octubre",
+    "end_en": "Early October",
+    "avgAnnualSnowfallCm": 400
+  },
+
+  "profile": {
+    "profile_es": "El centro de esquí más grande de Sudamérica, ideal para todos los niveles.",
+    "profile_en": "The largest ski resort in South America, suitable for all skill levels.",
+    "description_es": "Cerro Catedral ofrece más de 120 pistas y 39 medios de elevación en la Patagonia argentina. Su amplia infraestructura incluye escuelas de esquí, gastronomía de montaña, y una vibrante vida nocturna en la base. La vista al Lago Nahuel Huapi es espectacular.",
+    "description_en": "Cerro Catedral offers over 120 trails and 39 lifts in Argentine Patagonia. Its extensive infrastructure includes ski schools, mountain dining, and vibrant nightlife at the base. The views over Nahuel Huapi Lake are spectacular."
+  },
+
+  "links": {
+    "website": "https://catedralaltapatagonia.com/",
+    "trailMap": "https://catedralaltapatagonia.com/mapa-de-pistas",
+    "webcam": "https://catedralaltapatagonia.com/webcams",
+    "googleMaps": "https://maps.google.com/?q=-41.1647,-71.4411",
+    "instagram": "https://www.instagram.com/cerrocatedralok/",
+    "facebook": "https://www.facebook.com/cerrocatedral/"
+  },
+
+  "pricing2026": {
+    "confirmed": true,
+    "currency": "ARS",
+    "liftPassPerDay": {
+      "adult": { "low": 45000, "mid": 58000, "high": 72000 },
+      "child": { "low": 22500, "mid": 29000, "high": 36000 }
+    },
+    "equipmentPerDay": { "basic": 20000, "intermediate": 30000, "advanced": 42000 },
+    "lessonsPerClass": { "group": 32000, "private": 75000 },
+    "notes": "Precios a verificar contra tarifario oficial 2026"
+  },
+
+  "access": {
+    "airlines": [
+      { "name": "Aerolíneas Argentinas", "destination": "BRC", "reliable": true, "notes_es": "Vuelos diarios todo el año", "notes_en": "Daily flights year-round" },
+      { "name": "Flybondi", "destination": "BRC", "reliable": true, "notes_es": "Low cost. Verificar equipaje de esquí.", "notes_en": "Low cost. Check ski luggage policy." },
+      { "name": "JetSmart", "destination": "BRC", "reliable": true, "notes_es": "Ultra low cost. Equipaje de esquí con cargo adicional.", "notes_en": "Ultra low cost. Ski luggage has extra charge." }
+    ],
+    "driving": {
+      "originName": "Buenos Aires",
+      "distanceKm": 1640,
+      "estimatedHours": 18.5,
+      "tollEstimateArs": 45000,
+      "tollEstimateUsd": 37.50
+    }
+  }
+}

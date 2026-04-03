@@ -1,0 +1,80 @@
+{
+  "id": "3",
+  "slug": "chapelco",
+  "name": "Chapelco",
+  "source": "cerro-chapelco.com.ar",
+  "lastUpdated": "2026-04-03",
+  "verified": false,
+
+  "location": {
+    "city_es": "San Martín de los Andes",
+    "city_en": "San Martín de los Andes",
+    "province_es": "Neuquén",
+    "province_en": "Neuquén",
+    "airportCode": "CPC",
+    "latitude": -40.1978,
+    "longitude": -71.2614
+  },
+
+  "mountain": {
+    "baseElevation": 1250,
+    "summitElevation": 1980,
+    "verticalDrop": 730,
+    "totalTrails": 31,
+    "beginnerTrails": 8,
+    "intermediateTrails": 13,
+    "advancedTrails": 7,
+    "expertTrails": 3,
+    "totalLifts": 12,
+    "skiableAreaHa": 140
+  },
+
+  "season": {
+    "start_es": "Mediados de junio",
+    "start_en": "Mid-June",
+    "end_es": "Finales de septiembre",
+    "end_en": "Late September",
+    "avgAnnualSnowfallCm": 300
+  },
+
+  "profile": {
+    "profile_es": "Centro familiar con excelente infraestructura y vistas al Lago Lácar.",
+    "profile_en": "Family-friendly resort with excellent infrastructure and views of Lácar Lake.",
+    "description_es": "Chapelco combina pistas bien mantenidas con un entorno natural excepcional. Es ideal para familias y esquiadores intermedios, con un parque de nieve para snowboard y actividades para niños. La encantadora ciudad de San Martín de los Andes queda a solo 19 km.",
+    "description_en": "Chapelco combines well-groomed trails with an exceptional natural setting. It is ideal for families and intermediate skiers, with a snow park for snowboarders and kids activities. The charming town of San Martín de los Andes is just 19 km away."
+  },
+
+  "links": {
+    "website": "https://www.cerro-chapelco.com.ar/",
+    "trailMap": "https://www.cerro-chapelco.com.ar/mapa-de-pistas",
+    "webcam": "https://www.cerro-chapelco.com.ar/webcams",
+    "googleMaps": "https://maps.google.com/?q=-40.1978,-71.2614",
+    "instagram": "https://www.instagram.com/cerro_chapelco/",
+    "facebook": "https://www.facebook.com/cerrochapelco/"
+  },
+
+  "pricing2026": {
+    "confirmed": true,
+    "currency": "ARS",
+    "liftPassPerDay": {
+      "adult": { "low": 38000, "mid": 48000, "high": 60000 },
+      "child": { "low": 19000, "mid": 24000, "high": 30000 }
+    },
+    "equipmentPerDay": { "basic": 18000, "intermediate": 26000, "advanced": 36000 },
+    "lessonsPerClass": { "group": 28000, "private": 65000 },
+    "notes": "Precios a verificar contra tarifario oficial 2026"
+  },
+
+  "access": {
+    "airlines": [
+      { "name": "Aerolíneas Argentinas", "destination": "CPC", "reliable": true, "notes_es": "Vuelos en temporada de esquí", "notes_en": "Flights during ski season" }
+    ],
+    "driving": {
+      "originName": "Buenos Aires",
+      "distanceKm": 1580,
+      "estimatedHours": 17.5,
+      "tollEstimateArs": 42000,
+      "tollEstimateUsd": 35.00
+    }
+  }
+}

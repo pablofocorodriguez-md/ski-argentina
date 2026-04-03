@@ -1,0 +1,82 @@
+{
+  "id": "5",
+  "slug": "cerro-bayo",
+  "name": "Cerro Bayo",
+  "source": "cerrobayo.com.ar",
+  "lastUpdated": "2026-04-03",
+  "verified": false,
+
+  "location": {
+    "city_es": "Villa La Angostura",
+    "city_en": "Villa La Angostura",
+    "province_es": "Neuquén",
+    "province_en": "Neuquén",
+    "airportCode": "BRC",
+    "latitude": -40.7833,
+    "longitude": -71.6167
+  },
+
+  "mountain": {
+    "baseElevation": 1050,
+    "summitElevation": 1782,
+    "verticalDrop": 732,
+    "totalTrails": 24,
+    "beginnerTrails": 7,
+    "intermediateTrails": 10,
+    "advancedTrails": 5,
+    "expertTrails": 2,
+    "totalLifts": 11,
+    "skiableAreaHa": 200
+  },
+
+  "season": {
+    "start_es": "Mediados de junio",
+    "start_en": "Mid-June",
+    "end_es": "Finales de septiembre",
+    "end_en": "Late September",
+    "avgAnnualSnowfallCm": 350
+  },
+
+  "profile": {
+    "profile_es": "Centro boutique rodeado de bosques con una experiencia exclusiva y tranquila.",
+    "profile_en": "Boutique resort surrounded by forests offering an exclusive, peaceful experience.",
+    "description_es": "Cerro Bayo es un centro de esquí boutique con vistas panorámicas al Lago Nahuel Huapi y rodeado de bosques de lengas. Perfecto para quienes buscan una experiencia más tranquila e íntima que los centros más grandes. Villa La Angostura es una pintoresca villa de montaña.",
+    "description_en": "Cerro Bayo is a boutique ski resort with panoramic views of Nahuel Huapi Lake and surrounded by lenga forests. Perfect for those seeking a quieter, more intimate experience than larger resorts. Villa La Angostura is a picturesque mountain village."
+  },
+
+  "links": {
+    "website": "https://www.cerrobayo.com.ar/",
+    "trailMap": "https://www.cerrobayo.com.ar/mapa-de-pistas",
+    "webcam": null,
+    "googleMaps": "https://maps.google.com/?q=-40.7833,-71.6167",
+    "instagram": "https://www.instagram.com/cerrobayoski/",
+    "facebook": "https://www.facebook.com/cerrobayo/"
+  },
+
+  "pricing2026": {
+    "confirmed": false,
+    "currency": "ARS",
+    "liftPassPerDay": {
+      "adult": { "low": 35000, "mid": 44000, "high": 55000 },
+      "child": { "low": 17500, "mid": 22000, "high": 27500 }
+    },
+    "equipmentPerDay": { "basic": 16000, "intermediate": 24000, "advanced": 32000 },
+    "lessonsPerClass": { "group": 25000, "private": 58000 },
+    "notes": "Estimación. Cerro Bayo suele publicar tarifas más tarde."
+  },
+
+  "access": {
+    "airlines": [
+      { "name": "Aerolíneas Argentinas", "destination": "BRC", "reliable": true, "notes_es": "Vuelos diarios. Villa La Angostura queda a 80 km de Bariloche.", "notes_en": "Daily flights. Villa La Angostura is 80 km from Bariloche." },
+      { "name": "Flybondi", "destination": "BRC", "reliable": true, "notes_es": "Low cost. Villa La Angostura a 80 km de Bariloche.", "notes_en": "Low cost. Villa La Angostura is 80 km from Bariloche." },
+      { "name": "JetSmart", "destination": "BRC", "reliable": true, "notes_es": "Ultra low cost. Villa La Angostura a 80 km.", "notes_en": "Ultra low cost. Villa La Angostura is 80 km away." }
+    ],
+    "driving": {
+      "originName": "Buenos Aires",
+      "distanceKm": 1700,
+      "estimatedHours": 19.0,
+      "tollEstimateArs": 45000,
+      "tollEstimateUsd": 37.50
+    }
+  }
+}

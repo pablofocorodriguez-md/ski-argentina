@@ -1,0 +1,78 @@
+{
+  "id": "7",
+  "slug": "caviahue",
+  "name": "Caviahue",
+  "source": "caviahue-skiresort.com",
+  "lastUpdated": "2026-04-03",
+  "verified": false,
+
+  "location": {
+    "city_es": "Caviahue",
+    "city_en": "Caviahue",
+    "province_es": "Neuquén",
+    "province_en": "Neuquén",
+    "airportCode": "NQN",
+    "latitude": -37.8500,
+    "longitude": -71.0600
+  },
+
+  "mountain": {
+    "baseElevation": 1647,
+    "summitElevation": 2100,
+    "verticalDrop": 453,
+    "totalTrails": 18,
+    "beginnerTrails": 5,
+    "intermediateTrails": 8,
+    "advancedTrails": 3,
+    "expertTrails": 2,
+    "totalLifts": 8,
+    "skiableAreaHa": 50
+  },
+
+  "season": {
+    "start_es": "Finales de junio",
+    "start_en": "Late June",
+    "end_es": "Finales de septiembre",
+    "end_en": "Late September",
+    "avgAnnualSnowfallCm": 250
+  },
+
+  "profile": {
+    "profile_es": "Centro volcánico con termas naturales y paisajes únicos de araucarias.",
+    "profile_en": "Volcanic resort with natural hot springs and unique araucaria tree landscapes.",
+    "description_es": "Caviahue se encuentra en las laderas del volcán Copahue, rodeado de bosques de araucarias milenarias. Ofrece una experiencia única combinando esquí con termas naturales. Es un destino tranquilo, ideal para familias que buscan algo diferente y conectado con la naturaleza.",
+    "description_en": "Caviahue sits on the slopes of the Copahue volcano, surrounded by ancient araucaria forests. It offers a unique experience combining skiing with natural hot springs. It is a tranquil destination, ideal for families looking for something different and connected with nature."
+  },
+
+  "links": {
+    "website": "https://www.caviahue-skiresort.com/",
+    "trailMap": null,
+    "webcam": null,
+    "googleMaps": "https://maps.google.com/?q=-37.8500,-71.0600",
+    "instagram": "https://www.instagram.com/caviahueskiresort/",
+    "facebook": "https://www.facebook.com/caviahueskiresort/"
+  },
+
+  "pricing2026": {
+    "confirmed": false,
+    "currency": "ARS",
+    "liftPassPerDay": {
+      "adult": { "low": 22000, "mid": 28000, "high": 36000 },
+      "child": { "low": 11000, "mid": 14000, "high": 18000 }
+    },
+    "equipmentPerDay": { "basic": 12000, "intermediate": 18000, "advanced": 24000 },
+    "lessonsPerClass": { "group": 18000, "private": 40000 },
+    "notes": "Estimación. Caviahue suele publicar tarifas más tarde."
+  },
+
+  "access": {
+    "airlines": [],
+    "driving": {
+      "originName": "Buenos Aires",
+      "distanceKm": 1350,
+      "estimatedHours": 15.0,
+      "tollEstimateArs": 38000,
+      "tollEstimateUsd": 31.67
+    }
+  }
+}

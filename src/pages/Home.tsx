@@ -1,0 +1,64 @@
+import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
+
+export default function Home() {
+  const { t, i18n } = useTranslation()
+  const lang = i18n.language?.startsWith('en') ? 'en' : 'es'
+
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 sm:py-32 text-center">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-mountain-950 tracking-tight">
+          {t('home.title')}
+        </h1>
+        <p className="mt-6 text-lg sm:text-xl text-mountain-600 max-w-2xl mx-auto">
+          {t('home.subtitle')}
+        </p>
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link
+            to={`/${lang}/calculador`}
+            className="px-8 py-3 bg-snow-700 text-white rounded-xl font-semibold text-lg hover:bg-snow-800 transition-colors no-underline"
+          >
+            {t('home.cta')}
+          </Link>
+          <Link
+            to={`/${lang}/centros`}
+            className="px-8 py-3 border-2 border-mountain-200 text-mountain-700 rounded-xl font-semibold text-lg hover:border-mountain-300 hover:bg-mountain-50 transition-colors no-underline"
+          >
+            {t('home.browseResorts')}
+          </Link>
+        </div>
+      </section>
+
+      <section className="pb-20 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+        <div className="p-6">
+          <div className="text-4xl mb-4">🏔️</div>
+          <h3 className="font-display font-semibold text-mountain-800 text-lg">7 {t('nav.resorts')}</h3>
+          <p className="mt-2 text-mountain-500 text-sm">
+            {lang === 'es'
+              ? 'Desde Ushuaia hasta Mendoza, todos los centros principales.'
+              : 'From Ushuaia to Mendoza, all major resorts covered.'}
+          </p>
+        </div>
+        <div className="p-6">
+          <div className="text-4xl mb-4">🧮</div>
+          <h3 className="font-display font-semibold text-mountain-800 text-lg">{t('nav.calculator')}</h3>
+          <p className="mt-2 text-mountain-500 text-sm">
+            {lang === 'es'
+              ? 'Pases, equipo, clases, transporte y alojamiento en un solo cálculo.'
+              : 'Passes, gear, lessons, transport and lodging in one calculation.'}
+          </p>
+        </div>
+        <div className="p-6">
+          <div className="text-4xl mb-4">📊</div>
+          <h3 className="font-display font-semibold text-mountain-800 text-lg">{t('common.compare')}</h3>
+          <p className="mt-2 text-mountain-500 text-sm">
+            {lang === 'es'
+              ? 'Compará hasta 3 centros lado a lado.'
+              : 'Compare up to 3 resorts side by side.'}
+          </p>
+        </div>
+      </section>
+    </div>
+  )
+}
