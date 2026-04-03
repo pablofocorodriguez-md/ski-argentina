@@ -5,6 +5,7 @@ import {
   getEquipmentOptions, getLessonPrices, arePricesConfirmed,
   type Trip, type Passenger, type EquipmentLevel, type LessonType,
 } from '../../lib/pricing-data'
+import { getAppLanguage } from '../../i18n/lang'
 
 interface Props {
   trip: Trip
@@ -16,7 +17,9 @@ interface Props {
 export default function WizardStep2({ trip, onChange, onNext, onBack }: Props) {
   const { t, i18n } = useTranslation()
   const { currency } = useAppContext()
-  const lang = i18n.language?.startsWith('en') ? 'en' : 'es'
+  const lang = getAppLanguage(i18n.language)
+  const isEn = lang === 'en'
+  const isPt = lang === 'pt'
   const currencySymbol = currency === 'USD' ? 'US$' : '$'
 
   const resort = resorts.find(r => r.id === trip.resortId)
@@ -65,9 +68,9 @@ export default function WizardStep2({ trip, onChange, onNext, onBack }: Props) {
           <div className="mt-3 inline-flex items-center gap-2 bg-snow-50 border border-snow-200 rounded-lg px-3 py-1.5">
             <span className="text-snow-800 font-semibold text-sm">{resort.name}</span>
             <span className="text-mountain-400 text-xs">·</span>
-            <span className="text-mountain-500 text-xs">{trip.skiDays} {lang === 'es' ? 'días' : 'days'}</span>
+            <span className="text-mountain-500 text-xs">{trip.skiDays} {isEn ? 'days' : isPt ? 'dias' : 'días'}</span>
             <span className="text-mountain-400 text-xs">·</span>
-            <span className="text-mountain-500 text-xs">{trip.passengers.length} {lang === 'es' ? 'personas' : 'people'}</span>
+            <span className="text-mountain-500 text-xs">{trip.passengers.length} {isEn ? 'people' : 'personas'}</span>
           </div>
         )}
       </div>
@@ -76,7 +79,7 @@ export default function WizardStep2({ trip, onChange, onNext, onBack }: Props) {
       <div className="space-y-4 mb-8">
         <div className="flex items-center justify-between">
           <label className="block text-sm font-semibold text-mountain-700">
-            {lang === 'es' ? 'Equipo y clases por persona' : 'Gear & lessons per person'}
+            {isEn ? 'Gear & lessons per person' : isPt ? 'Equipamento e aulas por pessoa' : 'Equipo y clases por persona'}
           </label>
         </div>
 
@@ -85,7 +88,6 @@ export default function WizardStep2({ trip, onChange, onNext, onBack }: Props) {
             <PassengerRow
               key={idx}
               passenger={p}
-              index={idx}
               isFirst={idx === 0}
               totalPassengers={trip.passengers.length}
               onUpdate={(partial) => updatePassenger(idx, partial)}
@@ -120,10 +122,10 @@ export default function WizardStep2({ trip, onChange, onNext, onBack }: Props) {
                 >
                   <div className="flex justify-between items-center">
                     <span className="text-sm font-medium text-mountain-800">
-                      {lang === 'en' ? opt.label_en : opt.label_es}
+                      {isEn ? opt.label_en : opt.label_es}
                     </span>
                     <span className="text-xs text-mountain-500">
-                      {lang === 'es' ? 'desde' : 'from'} {fmt(opt.perDay.basic)}{t('calculator.perDay')}
+                      {isEn ? 'from' : 'desde'} {fmt(opt.perDay.basic)}{t('calculator.perDay')}
                     </span>
                   </div>
                 </button>
@@ -183,7 +185,7 @@ export default function WizardStep2({ trip, onChange, onNext, onBack }: Props) {
             {airlines.length > 0 && (
               <div className="space-y-2">
                 {airlines.filter(a => a.is_reliable).map((route) => {
-                  const notes = lang === 'en' ? route.notes_en : route.notes_es
+                  const notes = isEn ? route.notes_en : route.notes_es
                   return (
                     <div key={route.id} className="bg-white rounded-lg border border-mountain-100 p-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                       <div>
@@ -270,7 +272,6 @@ export default function WizardStep2({ trip, onChange, onNext, onBack }: Props) {
 
 interface PassengerRowProps {
   passenger: Passenger
-  index: number
   isFirst: boolean
   totalPassengers: number
   onUpdate: (partial: Partial<Passenger>) => void
@@ -283,10 +284,12 @@ interface PassengerRowProps {
 }
 
 function PassengerRow({
-  passenger, index, isFirst, totalPassengers,
+  passenger, isFirst, totalPassengers,
   onUpdate, onApplyEquipToAll, onApplyLessonsToAll,
   lessonPrices, fmt, lang, t,
 }: PassengerRowProps) {
+  const isEn = lang === 'en'
+  const isPt = lang === 'pt'
   const icon = passenger.type === 'adult' ? '👤' : '🧒'
 
   return (
@@ -321,7 +324,7 @@ function PassengerRow({
               onClick={() => onApplyEquipToAll(passenger.equipmentLevel)}
               className="text-[10px] text-snow-600 hover:text-snow-800 mt-1 cursor-pointer"
             >
-              {lang === 'es' ? 'Aplicar a todos →' : 'Apply to all →'}
+              {isEn ? 'Apply to all →' : isPt ? 'Aplicar para todos →' : 'Aplicar a todos →'}
             </button>
           )}
         </div>
@@ -357,7 +360,7 @@ function PassengerRow({
               onClick={() => onApplyLessonsToAll(passenger.lessonType)}
               className="text-[10px] text-snow-600 hover:text-snow-800 mt-1 cursor-pointer"
             >
-              {lang === 'es' ? 'Aplicar a todos →' : 'Apply to all →'}
+              {isEn ? 'Apply to all →' : isPt ? 'Aplicar para todos →' : 'Aplicar a todos →'}
             </button>
           )}
         </div>

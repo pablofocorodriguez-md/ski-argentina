@@ -1,10 +1,12 @@
 import { useTranslation } from 'react-i18next'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useAppContext } from '../context/AppContext'
+import { getAppLanguage, replaceLanguagePrefix } from '../i18n/lang'
 
 const languages = [
   { code: 'es', label: 'ES' },
   { code: 'en', label: 'EN' },
+  { code: 'pt', label: 'PT' },
 ] as const
 
 export default function Header() {
@@ -13,17 +15,11 @@ export default function Header() {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const currentLang = i18n.language?.startsWith('en') ? 'en' : 'es'
+  const currentLang = getAppLanguage(i18n.language)
 
-  function switchLanguage(lang: string) {
+  function switchLanguage(lang: 'es' | 'en' | 'pt') {
     i18n.changeLanguage(lang)
-    const path = location.pathname
-    const otherLang = lang === 'es' ? 'en' : 'es'
-    if (path.startsWith(`/${otherLang}/`)) {
-      navigate(path.replace(`/${otherLang}/`, `/${lang}/`))
-    } else if (path === `/${otherLang}`) {
-      navigate(`/${lang}`)
-    }
+    navigate(replaceLanguagePrefix(location.pathname, lang))
   }
 
   const prefix = `/${currentLang}`
@@ -37,10 +33,10 @@ export default function Header() {
         </Link>
 
         <nav className="hidden sm:flex items-center gap-6">
-          <Link to={`${prefix}/centros`} className="text-mountain-600 hover:text-snow-700 text-sm font-medium no-underline">
+          <Link to={`${prefix}/resorts`} className="text-mountain-600 hover:text-snow-700 text-sm font-medium no-underline">
             {t('nav.resorts')}
           </Link>
-          <Link to={`${prefix}/calculador`} className="text-mountain-600 hover:text-snow-700 text-sm font-medium no-underline">
+          <Link to={`${prefix}/calculator`} className="text-mountain-600 hover:text-snow-700 text-sm font-medium no-underline">
             {t('nav.calculator')}
           </Link>
         </nav>

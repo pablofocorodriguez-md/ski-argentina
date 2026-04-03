@@ -29,6 +29,7 @@ export default function App() {
         <Routes>
           <Route path="/es/*" element={<LangRoutes />} />
           <Route path="/en/*" element={<LangRoutes />} />
+          <Route path="/pt/*" element={<LangRoutes />} />
           <Route path="*" element={<Navigate to="/es" replace />} />
         </Routes>
       </BrowserRouter>

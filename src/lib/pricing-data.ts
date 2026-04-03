@@ -8,6 +8,7 @@ import castorData from '../../data/resorts/cerro-castor.json'
 import bayoData from '../../data/resorts/cerro-bayo.json'
 import hoyaData from '../../data/resorts/la-hoya.json'
 import caviahueData from '../../data/resorts/caviahue.json'
+import type { AppLanguage } from '../i18n/lang'
 
 const allData = [catedralData, lenasData, chapelcoData, castorData, bayoData, hoyaData, caviahueData]
 
@@ -198,11 +199,13 @@ export interface TripWithResult {
 }
 
 /** Build passengers array from adults/children count */
-export function buildPassengers(adults: number, children: number, lang: 'es' | 'en'): Passenger[] {
+export function buildPassengers(adults: number, children: number, lang: AppLanguage): Passenger[] {
+  const adultLabel = lang === 'en' ? 'Adult' : 'Adulto'
+  const childLabel = lang === 'en' ? 'Child' : lang === 'pt' ? 'Criança' : 'Menor'
   const passengers: Passenger[] = []
   for (let i = 1; i <= adults; i++) {
     passengers.push({
-      label: lang === 'es' ? `Adulto ${i}` : `Adult ${i}`,
+      label: `${adultLabel} ${i}`,
       type: 'adult',
       equipmentLevel: 'none',
       lessonType: 'none',
@@ -210,7 +213,7 @@ export function buildPassengers(adults: number, children: number, lang: 'es' | '
   }
   for (let i = 1; i <= children; i++) {
     passengers.push({
-      label: lang === 'es' ? `Menor ${i}` : `Child ${i}`,
+      label: `${childLabel} ${i}`,
       type: 'child',
       equipmentLevel: 'none',
       lessonType: 'none',
@@ -278,7 +281,7 @@ export function calculateTripCost(trip: Trip): TripCostBreakdown {
   }
 }
 
-export function createEmptyTrip(currency: 'ARS' | 'USD', lang: 'es' | 'en' = 'es'): Trip {
+export function createEmptyTrip(currency: 'ARS' | 'USD', lang: AppLanguage = 'es'): Trip {
   return {
     id: crypto.randomUUID(),
     resortId: '',

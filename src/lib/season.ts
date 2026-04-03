@@ -1,3 +1,5 @@
+import type { AppLanguage } from '../i18n/lang'
+
 // Argentine ski season periods based on typical calendar dates.
 // High: first 2 weeks of July (winter school break) + last week of July
 // Mid: rest of July, August
@@ -54,11 +56,11 @@ export function calculateSkiDays(startDate: string, endDate: string): number {
   return Math.max(1, diff)
 }
 
-export function getPeriodLabel(period: SeasonPeriod, lang: 'es' | 'en'): string {
+export function getPeriodLabel(period: SeasonPeriod, lang: AppLanguage): string {
   const labels: Record<SeasonPeriod, Record<string, string>> = {
-    low: { es: 'Temporada baja', en: 'Low season' },
-    mid: { es: 'Temporada media', en: 'Mid season' },
-    high: { es: 'Temporada alta', en: 'High season' },
+    low: { es: 'Temporada baja', en: 'Low season', pt: 'Baixa temporada' },
+    mid: { es: 'Temporada media', en: 'Mid season', pt: 'Média temporada' },
+    high: { es: 'Temporada alta', en: 'High season', pt: 'Alta temporada' },
   }
   return labels[period][lang]
 }

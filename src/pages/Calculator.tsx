@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAppContext } from '../context/AppContext'
@@ -10,6 +10,7 @@ import TripCard from '../components/calculator/TripCard'
 import TripComparison from '../components/calculator/TripComparison'
 import { calculateTripCost, createEmptyTrip, type Trip, type TripWithResult } from '../lib/pricing-data'
 import { resorts } from '../lib/resorts-data'
+import { getAppLanguage } from '../i18n/lang'
 
 type View = 'list' | 'wizard' | 'compare'
 
@@ -17,28 +18,19 @@ export default function Calculator() {
   const { t, i18n } = useTranslation()
   const { currency } = useAppContext()
   const [searchParams] = useSearchParams()
-  const lang = (i18n.language?.startsWith('en') ? 'en' : 'es') as 'es' | 'en'
+  const lang = getAppLanguage(i18n.language)
+  const resortSlug = searchParams.get('resort')
+  const preselectedResort = resortSlug ? resorts.find(r => r.slug === resortSlug) : undefined
 
-  const [view, setView] = useState<View>('list')
+  const [view, setView] = useState<View>(preselectedResort ? 'wizard' : 'list')
   const [trips, setTrips] = useState<TripWithResult[]>([])
-  const [currentTrip, setCurrentTrip] = useState<Trip>(createEmptyTrip(currency, lang))
+  const [currentTrip, setCurrentTrip] = useState<Trip>(() => {
+    const trip = createEmptyTrip(currency, lang)
+    if (preselectedResort) trip.resortId = preselectedResort.id
+    return trip
+  })
   const [wizardStep, setWizardStep] = useState(1)
   const [editingIndex, setEditingIndex] = useState<number | null>(null)
-
-  // Pre-select resort from URL (e.g. ?resort=cerro-catedral)
-  useEffect(() => {
-    const resortSlug = searchParams.get('resort')
-    if (resortSlug && trips.length === 0) {
-      const resort = resorts.find(r => r.slug === resortSlug)
-      if (resort) {
-        const trip = createEmptyTrip(currency, lang)
-        trip.resortId = resort.id
-        setCurrentTrip(trip)
-        setView('wizard')
-        setWizardStep(1)
-      }
-    }
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   function startNewTrip() {
     setCurrentTrip(createEmptyTrip(currency, lang))

@@ -2,12 +2,13 @@ import { useParams, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAppContext } from '../context/AppContext'
 import { getResortBySlug, getAirlineRoutesForResort, getDrivingRouteForResort } from '../lib/resorts-data'
+import { getAppLanguage } from '../i18n/lang'
 
 export default function ResortDetail() {
   const { slug } = useParams<{ slug: string }>()
   const { t, i18n } = useTranslation()
   const { currency } = useAppContext()
-  const lang = i18n.language?.startsWith('en') ? 'en' : 'es'
+  const lang = getAppLanguage(i18n.language)
 
   const resort = slug ? getResortBySlug(slug) : undefined
 
@@ -15,7 +16,7 @@ export default function ResortDetail() {
     return (
       <div className="max-w-7xl mx-auto px-4 py-20 text-center">
         <h1 className="text-2xl font-bold text-mountain-800">Resort not found</h1>
-        <Link to={`/${lang}/centros`} className="mt-4 inline-block text-snow-700 underline">
+        <Link to={`/${lang}/resorts`} className="mt-4 inline-block text-snow-700 underline">
           {t('resorts.title')}
         </Link>
       </div>
@@ -240,7 +241,7 @@ export default function ResortDetail() {
 
             {/* CTA */}
             <Link
-              to={`/${lang}/calculador?resort=${resort.slug}`}
+              to={`/${lang}/calculator?resort=${resort.slug}`}
               className="block w-full text-center px-6 py-3 bg-snow-700 text-white rounded-xl font-semibold hover:bg-snow-800 transition-colors no-underline"
             >
               {t('resorts.calculateTripTo', { resort: resort.name })}
