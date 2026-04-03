@@ -3,6 +3,7 @@ import { useAppContext } from '../../context/AppContext'
 import { resorts } from '../../lib/resorts-data'
 import { arePricesConfirmed, buildPassengers, type Trip } from '../../lib/pricing-data'
 import { detectPeriodFromRange, calculateSkiDays, getPeriodLabel } from '../../lib/season'
+import { getAppLanguage } from '../../i18n/lang'
 
 interface Props {
   trip: Trip
@@ -14,7 +15,7 @@ interface Props {
 export default function WizardStep1({ trip, onChange, onNext, onCancel }: Props) {
   const { t, i18n } = useTranslation()
   const { currency } = useAppContext()
-  const lang = i18n.language?.startsWith('en') ? 'en' : 'es'
+  const lang = getAppLanguage(i18n.language)
   const currencySymbol = currency === 'USD' ? 'US$' : '$'
 
   const skiDays = trip.startDate && trip.endDate

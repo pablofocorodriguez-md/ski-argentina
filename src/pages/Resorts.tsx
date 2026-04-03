@@ -1,10 +1,11 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { resorts } from '../lib/resorts-data'
+import { getAppLanguage } from '../i18n/lang'
 
 export default function Resorts() {
   const { t, i18n } = useTranslation()
-  const lang = i18n.language?.startsWith('en') ? 'en' : 'es'
+  const lang = getAppLanguage(i18n.language)
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -21,7 +22,7 @@ export default function Resorts() {
           return (
             <Link
               key={resort.id}
-              to={`/${lang}/centros/${resort.slug}`}
+              to={`/${lang}/resorts/${resort.slug}`}
               className="group block bg-white rounded-2xl border border-mountain-100 overflow-hidden hover:shadow-lg hover:border-snow-300 transition-all no-underline"
             >
               {/* Photo placeholder */}

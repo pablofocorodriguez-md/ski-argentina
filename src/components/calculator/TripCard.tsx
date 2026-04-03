@@ -3,6 +3,7 @@ import { useAppContext } from '../../context/AppContext'
 import { resorts } from '../../lib/resorts-data'
 import { getPeriodLabel } from '../../lib/season'
 import type { TripWithResult } from '../../lib/pricing-data'
+import { getAppLanguage } from '../../i18n/lang'
 
 interface Props {
   tripWithResult: TripWithResult
@@ -13,7 +14,7 @@ interface Props {
 export default function TripCard({ tripWithResult, onEdit, onDelete }: Props) {
   const { t, i18n } = useTranslation()
   const { currency } = useAppContext()
-  const lang = i18n.language?.startsWith('en') ? 'en' : 'es'
+  const lang = getAppLanguage(i18n.language)
 
   const { trip, result } = tripWithResult
   const resort = resorts.find(r => r.id === trip.resortId)

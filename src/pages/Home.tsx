@@ -1,9 +1,10 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
+import { getAppLanguage } from '../i18n/lang'
 
 export default function Home() {
   const { t, i18n } = useTranslation()
-  const lang = i18n.language?.startsWith('en') ? 'en' : 'es'
+  const lang = getAppLanguage(i18n.language)
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,13 +17,13 @@ export default function Home() {
         </p>
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
-            to={`/${lang}/calculador`}
+            to={`/${lang}/calculator`}
             className="px-8 py-3 bg-snow-700 text-white rounded-xl font-semibold text-lg hover:bg-snow-800 transition-colors no-underline"
           >
             {t('home.cta')}
           </Link>
           <Link
-            to={`/${lang}/centros`}
+            to={`/${lang}/resorts`}
             className="px-8 py-3 border-2 border-mountain-200 text-mountain-700 rounded-xl font-semibold text-lg hover:border-mountain-300 hover:bg-mountain-50 transition-colors no-underline"
           >
             {t('home.browseResorts')}

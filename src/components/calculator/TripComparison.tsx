@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
 import { useAppContext } from '../../context/AppContext'
 import { resorts } from '../../lib/resorts-data'
 import { getEquipmentOptions, type TripWithResult } from '../../lib/pricing-data'
+import { getAppLanguage } from '../../i18n/lang'
 
 interface Props {
   trips: TripWithResult[]
@@ -14,7 +14,9 @@ interface Props {
 export default function TripComparison({ trips, onModify, onDelete, onBack }: Props) {
   const { t, i18n } = useTranslation()
   const { currency } = useAppContext()
-  const lang = i18n.language?.startsWith('en') ? 'en' : 'es'
+  const lang = getAppLanguage(i18n.language)
+  const isEn = lang === 'en'
+  const isPt = lang === 'pt'
 
   const fmt = (n: number) => {
     if (currency === 'USD') return `US$ ${n.toLocaleString('en-US')}`
@@ -66,9 +68,9 @@ export default function TripComparison({ trips, onModify, onDelete, onBack }: Pr
           const eqOptions = getEquipmentOptions(result.resortId)
           const eqOpt = eqOptions.find(o => o.key === result.equipmentLocationKey)
           const eqLabel = result.equipmentLocationKey === 'custom'
-            ? (lang === 'es' ? 'Equipo (precio propio)' : 'Equipment (custom)')
+            ? (isEn ? 'Equipment (custom)' : isPt ? 'Equipamento (preço próprio)' : 'Equipo (precio propio)')
             : eqOpt
-              ? `${t('calculator.results.equipment')} (${lang === 'en' ? eqOpt.label_en : eqOpt.label_es})`
+              ? `${t('calculator.results.equipment')} (${isEn ? eqOpt.label_en : eqOpt.label_es})`
               : t('calculator.results.equipment')
 
           return (
@@ -83,12 +85,12 @@ export default function TripComparison({ trips, onModify, onDelete, onBack }: Pr
                 <div className="flex items-start justify-between">
                   <div>
                     <h3 className="text-lg font-display font-bold text-mountain-900">{resort.name}</h3>
-                    <p className="text-sm text-mountain-500">{lang === 'en' ? resort.city_en : resort.city_es}</p>
+                    <p className="text-sm text-mountain-500">{isEn ? resort.city_en : resort.city_es}</p>
                   </div>
                   <div className="flex flex-col items-end gap-1">
                     {isCheapest && (
                       <span className="text-xs bg-green-100 text-green-700 px-2.5 py-1 rounded-full font-medium">
-                        {lang === 'es' ? 'Más barato' : 'Cheapest'}
+                        {isEn ? 'Cheapest' : isPt ? 'Mais barato' : 'Más barato'}
                       </span>
                     )}
                     {isSameResortDiffDate && (
@@ -99,7 +101,7 @@ export default function TripComparison({ trips, onModify, onDelete, onBack }: Pr
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-2 mt-3 text-xs text-mountain-500">
-                  <span className="bg-mountain-50 px-2 py-1 rounded">{trip.skiDays} {lang === 'es' ? 'días' : 'days'}</span>
+                  <span className="bg-mountain-50 px-2 py-1 rounded">{trip.skiDays} {isEn ? 'days' : isPt ? 'dias' : 'días'}</span>
                   {trip.startDate && <span className="bg-mountain-50 px-2 py-1 rounded">{trip.startDate}</span>}
                   <span className="bg-mountain-50 px-2 py-1 rounded">{resort.summit_elevation}m</span>
                 </div>
