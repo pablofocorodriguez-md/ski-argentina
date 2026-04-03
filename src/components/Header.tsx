@@ -19,7 +19,7 @@ export default function Header() {
 
   function switchLanguage(lang: 'es' | 'en' | 'pt') {
     i18n.changeLanguage(lang)
-    navigate(replaceLanguagePrefix(location.pathname, lang))
+    navigate(`${replaceLanguagePrefix(location.pathname, lang)}${location.search}${location.hash}`)
   }
 
   const prefix = `/${currentLang}`

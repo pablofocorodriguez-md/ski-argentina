@@ -13,9 +13,9 @@
     "send": "Enviar",
     "loading": "Cargando...",
     "error": "Error",
-    "disclaimer": "Precios orientativos temporada 2026",
+    "disclaimer": "Solo mostramos cálculos con información oficial 2026 publicada por cada centro.",
     "perPerson": "por persona",
-    "total": "Total estimado",
+    "total": "Total del viaje",
     "modifyParams": "Modificar parámetros",
     "sendByEmail": "Mandar resumen al mail",
     "viewProfile": "Ver ficha completa",
@@ -28,14 +28,21 @@
     "about": "Info"
   },
   "home": {
-    "title": "¿Cuánto sale esquiar en Argentina?",
-    "subtitle": "Compará costos entre centros de ski argentinos. Pases, equipo, clases, transporte — todo en un solo lugar.",
-    "cta": "Empezar a calcular",
-    "browseResorts": "Ver centros de ski"
+    "title": "¿Cuánto cuesta esquiar en Argentina en 2026?",
+    "subtitle": "Una herramienta simple para estimar tu viaje de ski en 2026. Hoy el cálculo completo está habilitado para Cerro Castor.",
+    "cta": "Calcular en Cerro Castor",
+    "browseResorts": "Ver estado de los centros",
+    "focusBadge": "Experimento 2026: enfoque en datos reales",
+    "card1Title": "Datos oficiales primero",
+    "card1Body": "Sin precios inventados: solo calculamos donde ya hay tarifas 2026 publicadas.",
+    "card2Title": "Cerro Castor habilitado",
+    "card2Body": "Podés estimar pase, equipo, clases, transporte y alojamiento para Castor.",
+    "card3Title": "Más centros en camino",
+    "card3Body": "Vamos a habilitar cada centro cuando publique información oficial 2026."
   },
   "resorts": {
     "title": "Centros de Ski",
-    "subtitle": "Los 7 principales centros de ski de Argentina",
+    "subtitle": "Estado de cada centro para la temporada 2026",
     "altitude": "Cota máxima",
     "verticalDrop": "Desnivel",
     "trails": "Pistas",
@@ -72,13 +79,15 @@
     "byCar": "En auto",
     "searchFlights": "Buscar vuelos",
     "googleFlights": "Google Flights",
-    "unreliable": "Frecuencia irregular"
+    "unreliable": "Frecuencia irregular",
+    "availableNow": "Disponible",
+    "comingSoonShort": "Próximamente"
   },
   "calculator": {
-    "title": "Calculador de costos",
+    "title": "Calculador 2026",
     "myTrips": "Mis viajes",
     "noTripsYet": "Todavía no armaste ningún viaje",
-    "noTripsHint": "Armá tu primer viaje para estimar cuánto te saldría esquiar",
+    "noTripsHint": "Armá tu viaje con centros que ya tienen información oficial 2026.",
     "addTrip": "Armar viaje",
     "addAnother": "Agregar otra opción",
     "compareTrips": "Comparar",
@@ -87,7 +96,7 @@
     "tripSummary": "{{days}} días · {{people}} personas · {{period}}",
     "sameResortBadge": "Mismo centro, diferente fecha",
     "step1Title": "Elegí centro y fechas",
-    "step1Subtitle": "Seleccioná un centro y definí cuándo vas",
+    "step1Subtitle": "Por ahora solo podés calcular en centros con tarifas oficiales 2026 publicadas.",
     "step2Title": "Equipo, clases y transporte",
     "step2Subtitle": "Configurá lo que necesitás para este viaje",
     "step3Title": "Resultado",
@@ -140,9 +149,9 @@
     "selected": "{{count}} centro seleccionado",
     "selected_plural": "{{count}} centros seleccionados",
     "maxResorts": "Máximo 3 centros",
-    "pricesConfirmed": "Precios oficiales 2026",
-    "pricesEstimated": "Precios estimados — tarifas 2026 por anunciarse",
-    "pricesEstimatedShort": "Estimado"
+    "pricesConfirmed": "Información oficial 2026",
+    "pricesEstimated": "Próximamente — pendiente de publicación oficial 2026",
+    "pricesEstimatedShort": "Próximamente"
   },
   "email": {
     "title": "Recibí tu resumen por mail",
@@ -152,7 +161,7 @@
     "success": "¡Listo! Revisá tu casilla."
   },
   "footer": {
-    "disclaimer": "Precios orientativos. Consultá fuentes oficiales antes de comprar.",
+    "disclaimer": "Mostramos cálculo solo para centros con datos oficiales 2026.",
     "madeWith": "Hecho con",
     "forSkiers": "para esquiadores"
   }

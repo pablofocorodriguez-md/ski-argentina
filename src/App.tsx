@@ -11,11 +11,8 @@ function LangRoutes() {
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="centros" element={<Resorts />} />
-        <Route path="centros/:slug" element={<ResortDetail />} />
         <Route path="resorts" element={<Resorts />} />
         <Route path="resorts/:slug" element={<ResortDetail />} />
-        <Route path="calculador" element={<Calculator />} />
         <Route path="calculator" element={<Calculator />} />
       </Route>
     </Routes>

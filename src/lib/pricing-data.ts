@@ -9,6 +9,7 @@ import bayoData from '../../data/resorts/cerro-bayo.json'
 import hoyaData from '../../data/resorts/la-hoya.json'
 import caviahueData from '../../data/resorts/caviahue.json'
 import type { AppLanguage } from '../i18n/lang'
+import { isResortCalculable } from './resorts-data'
 
 const allData = [catedralData, lenasData, chapelcoData, castorData, bayoData, hoyaData, caviahueData]
 
@@ -17,7 +18,7 @@ const exchangeRate = 1200
 const resortDataMap = Object.fromEntries(allData.map(d => [d.id, d]))
 
 export const resortPricingStatus: Record<string, boolean> = Object.fromEntries(
-  allData.map(d => [d.id, d.pricing2026.confirmed])
+  allData.map(d => [d.id, d.pricing2026.confirmed && isResortCalculable(d.id)])
 )
 
 export function arePricesConfirmed(resortId: string): boolean {
@@ -38,7 +39,7 @@ export interface EquipmentOption {
 
 export function getEquipmentOptions(resortId: string): EquipmentOption[] {
   const data = resortDataMap[resortId]
-  if (!data) return []
+  if (!data || !isResortCalculable(resortId)) return []
   const pricing = data.pricing2026 as Record<string, unknown>
 
   if ('equipment' in pricing && typeof pricing.equipment === 'object' && pricing.equipment !== null) {
@@ -94,7 +95,7 @@ export function getLiftPassPrice(
   currency: 'ARS' | 'USD'
 ): number {
   const data = resortDataMap[resortId]
-  if (!data) return 0
+  if (!data || !isResortCalculable(resortId)) return 0
   const lp = data.pricing2026.liftPassPerDay
   let perDay = lp.adult[period]
   if (riderType === 'child') perDay = lp.child[period]
@@ -133,14 +134,14 @@ export function getLessonPrice(
   currency: 'ARS' | 'USD'
 ): number {
   const data = resortDataMap[resortId]
-  if (!data) return 0
+  if (!data || !isResortCalculable(resortId)) return 0
   const total = data.pricing2026.lessonsPerClass[type] * days
   return currency === 'USD' ? Math.round(total / exchangeRate) : Math.round(total)
 }
 
 export function getLessonPrices(resortId: string): { group: number; private: number } | null {
   const data = resortDataMap[resortId]
-  if (!data) return null
+  if (!data || !isResortCalculable(resortId)) return null
   return {
     group: data.pricing2026.lessonsPerClass.group,
     private: data.pricing2026.lessonsPerClass.private,

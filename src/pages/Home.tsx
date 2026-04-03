@@ -9,7 +9,10 @@ export default function Home() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <section className="py-20 sm:py-32 text-center">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-mountain-950 tracking-tight">
+        <p className="inline-flex items-center rounded-full bg-snow-100 text-snow-800 px-4 py-1.5 text-sm font-semibold">
+          {t('home.focusBadge')}
+        </p>
+        <h1 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-mountain-950 tracking-tight">
           {t('home.title')}
         </h1>
         <p className="mt-6 text-lg sm:text-xl text-mountain-600 max-w-2xl mx-auto">
@@ -33,31 +36,19 @@ export default function Home() {
 
       <section className="pb-20 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
         <div className="p-6">
-          <div className="text-4xl mb-4">🏔️</div>
-          <h3 className="font-display font-semibold text-mountain-800 text-lg">7 {t('nav.resorts')}</h3>
-          <p className="mt-2 text-mountain-500 text-sm">
-            {lang === 'es'
-              ? 'Desde Ushuaia hasta Mendoza, todos los centros principales.'
-              : 'From Ushuaia to Mendoza, all major resorts covered.'}
-          </p>
+          <div className="text-4xl mb-4">✅</div>
+          <h3 className="font-display font-semibold text-mountain-800 text-lg">{t('home.card1Title')}</h3>
+          <p className="mt-2 text-mountain-500 text-sm">{t('home.card1Body')}</p>
         </div>
         <div className="p-6">
-          <div className="text-4xl mb-4">🧮</div>
-          <h3 className="font-display font-semibold text-mountain-800 text-lg">{t('nav.calculator')}</h3>
-          <p className="mt-2 text-mountain-500 text-sm">
-            {lang === 'es'
-              ? 'Pases, equipo, clases, transporte y alojamiento en un solo cálculo.'
-              : 'Passes, gear, lessons, transport and lodging in one calculation.'}
-          </p>
+          <div className="text-4xl mb-4">🎿</div>
+          <h3 className="font-display font-semibold text-mountain-800 text-lg">{t('home.card2Title')}</h3>
+          <p className="mt-2 text-mountain-500 text-sm">{t('home.card2Body')}</p>
         </div>
         <div className="p-6">
-          <div className="text-4xl mb-4">📊</div>
-          <h3 className="font-display font-semibold text-mountain-800 text-lg">{t('common.compare')}</h3>
-          <p className="mt-2 text-mountain-500 text-sm">
-            {lang === 'es'
-              ? 'Compará hasta 3 centros lado a lado.'
-              : 'Compare up to 3 resorts side by side.'}
-          </p>
+          <div className="text-4xl mb-4">🕒</div>
+          <h3 className="font-display font-semibold text-mountain-800 text-lg">{t('home.card3Title')}</h3>
+          <p className="mt-2 text-mountain-500 text-sm">{t('home.card3Body')}</p>
         </div>
       </section>
     </div>
